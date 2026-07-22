@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\EventRequest;
+use App\Models\Event;
 
 class EventController extends Controller
 {
@@ -12,6 +14,8 @@ class EventController extends Controller
     public function index()
     {
         //
+        $events=Event::latest()->paginate(10);
+        return view('events.index', compact('events'));
     }
 
     /**

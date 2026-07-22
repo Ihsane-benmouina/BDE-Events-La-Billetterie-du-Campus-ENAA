@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -31,3 +32,9 @@ Route::get('/student/dashboard', function () {
 })
 ->middleware('auth')
 ->name('student.dashboard');
+
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+
+    Route::resource('events', EventController::class);
+
+});
