@@ -12,25 +12,34 @@
 
 <body class="bg-slate-100">
 
-<div class="flex min-h-screen">
+    <div class="flex min-h-screen">
 
-    @include('components.sidebar')
+        @include('components.sidebar')
 
-    <div class="flex-1 flex flex-col">
+        <div class="flex-1 flex flex-col">
 
-        @include('components.navbar')
+            @include('components.navbar')
 
-        <main class="p-6">
+            <main class="p-6">
 
-            @include('components.flash-message')
+                @include('components.flash-message')
+                @if(session('success'))
 
-            @yield('content')
+                <div class="mb-6 rounded-lg bg-green-100 border border-green-300 p-4 text-green-700">
 
-        </main>
+                    {{ session('success') }}
+
+                </div>
+
+                @endif
+
+                @yield('content')
+
+            </main>
+
+        </div>
 
     </div>
-
-</div>
 
 </body>
 
