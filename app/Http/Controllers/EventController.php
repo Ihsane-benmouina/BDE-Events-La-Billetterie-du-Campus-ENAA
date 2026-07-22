@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -33,7 +34,10 @@ class EventController extends Controller
     public function store(EventRequest $request)
     {
         //
-        Event::create($request->validated());
+        Event::create([
+            ...$request->validated(),
+            'user_id'=>Auth::id(),
+        ]);
         return redirect()->route('events.index')->with('success', 'Evenement cree evec succes');
     }
 

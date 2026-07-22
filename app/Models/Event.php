@@ -17,9 +17,14 @@ class Event extends Model
         'location',
         'price',
         'capacity',
+        'user_id',
     ];
     public function resrvations()
     {
         return $this->hasMany(Reservation::class);
     }
+    public function admin()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
 }
