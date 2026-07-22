@@ -61,10 +61,36 @@
 
             <td class="p-3 text-center">
 
-                <a href="{{ route('events.edit', $event) }}"
-                   class="text-blue-600">
-                    Modifier
-                </a>
+             <td class="p-3 text-center">
+
+    <div class="flex justify-center gap-3">
+
+        <a href="{{ route('events.edit', $event) }}"
+            class="text-blue-600 hover:text-blue-800">
+
+            Modifier
+
+        </a>
+
+        <form action="{{ route('events.destroy', $event) }}"
+            method="POST"
+            onsubmit="return confirm('Voulez-vous vraiment supprimer cet événement ?')">
+
+            @csrf
+            @method('DELETE')
+
+            <button
+                class="text-red-600 hover:text-red-800">
+
+                Supprimer
+
+            </button>
+
+        </form>
+
+    </div>
+
+</td>
 
             </td>
 

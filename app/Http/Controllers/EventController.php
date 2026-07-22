@@ -52,24 +52,29 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Event $event)
     {
         //
+        return view('events.edit', compact('event'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EventRequest $request, Event $event)
     {
         //
+        $event->update($request->validated());
+        return redirect()->route('events.index')->with('success', 'Evenement modifie avec succes');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Event $event)
     {
         //
+        $event->delete();
+        return redirect()->route('events.index')->with('Événement supprimé avec succès');
     }
 }
