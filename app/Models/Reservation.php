@@ -19,7 +19,7 @@ class Reservation extends Model
     ];
     public function user()
     {
-        return $this->belongsTo(Event::class);
+        return $this->belongsTo(User::class);
     }
     public function event()
     {
@@ -28,5 +28,9 @@ class Reservation extends Model
     public function ticket()
     {
         return $this->hasOne(Ticket::class);
+    }
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
     }
 }

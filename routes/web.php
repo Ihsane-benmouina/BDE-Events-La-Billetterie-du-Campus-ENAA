@@ -38,3 +38,11 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
             ->name('admin.dashboard');
 
 });
+Route::middleware(['auth'])
+    ->prefix('student')
+    ->group(function () {
+
+        Route::get('/events', [\App\Http\Controllers\Student\EventController::class, 'index'])
+            ->name('student.events');
+
+    });
