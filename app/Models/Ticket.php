@@ -14,9 +14,7 @@ class Ticket extends Model
         'ticket_code',
         'generated_at',
     ];
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
+ 
     public function reservation()
     {
         return $this->belongsTo(Reservation::class);

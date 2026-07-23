@@ -29,8 +29,5 @@ class Reservation extends Model
     {
         return $this->hasOne(Ticket::class);
     }
-    public function reservations()
-    {
-        return $this->hasMany(Reservation::class);
-    }
+   
 }

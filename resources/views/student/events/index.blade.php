@@ -8,6 +8,17 @@
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
+@if(session('success'))
+    <div class="mb-4 bg-green-100 text-green-700 p-3 rounded">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="mb-4 bg-red-100 text-red-700 p-3 rounded">
+        {{ session('error') }}
+    </div>
+@endif
 @foreach($events as $event)
 
 <div class="bg-white rounded-xl shadow p-6">
@@ -42,12 +53,18 @@
 
     </p>
 
+   <form action="{{ route('student.reserve', $event) }}" method="POST">
+
+    @csrf
+ 
     <button
-        class="mt-4 w-full bg-lime-500 text-white py-2 rounded-lg">
+        class="mt-4 w-full bg-lime-500 hover:bg-lime-600 text-white py-2 rounded-lg">
 
         S'inscrire
 
     </button>
+
+</form>
 
 </div>
 
