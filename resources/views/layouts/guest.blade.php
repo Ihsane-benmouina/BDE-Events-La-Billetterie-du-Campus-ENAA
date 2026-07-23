@@ -13,12 +13,7 @@
 
 </head>
 
-<body
-class="min-h-screen
-bg-gradient-to-br
-from-primary
-via-slate-900
-to-slate-950">
+<body class="min-h-screen bg-[#0d1520] font-sans antialiased selection:bg-teal-500 selection:text-white">
 
 @yield('content')
 
