@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\Admin\DashboardController;
+
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -21,11 +23,7 @@ Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})
-->middleware(['auth', 'isAdmin'])
-->name('admin.dashboard');
+
 
 Route::get('/student/dashboard', function () {
     return view('student.dashboard');
@@ -36,5 +34,7 @@ Route::get('/student/dashboard', function () {
 Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::resource('events', EventController::class);
+      Route::get('/dashboard', [DashboardController::class, 'index'])
+            ->name('admin.dashboard');
 
 });
