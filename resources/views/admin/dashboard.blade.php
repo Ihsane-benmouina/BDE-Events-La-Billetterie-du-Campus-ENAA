@@ -28,6 +28,72 @@
             {{ $reservationsCount }}
         </p>
     </div>
+    
+
+</div>
+<div class="mt-10 bg-white rounded-xl shadow">
+
+    <div class="p-6 border-b">
+        <h2 class="text-xl font-bold">
+            Suivi des capacités
+        </h2>
+    </div>
+
+    <table class="w-full">
+
+        <thead class="bg-gray-100">
+
+        <tr>
+
+            <th class="p-4 text-left">Événement</th>
+
+            <th class="p-4 text-center">Capacité</th>
+
+            <th class="p-4 text-center">Réservations</th>
+
+            <th class="p-4 text-center">Places restantes</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        @foreach($events as $event)
+
+            <tr class="border-b">
+
+                <td class="p-4">
+
+                    {{ $event->title }}
+
+                </td>
+
+                <td class="text-center">
+
+                    {{ $event->capacity }}
+
+                </td>
+
+                <td class="text-center">
+
+                    {{ $event->reservations_count }}
+
+                </td>
+
+                <td class="text-center font-bold text-lime-600">
+
+                    {{ $event->capacity - $event->reservations_count }}
+
+                </td>
+
+            </tr>
+
+        @endforeach
+
+        </tbody>
+
+    </table>
 
 </div>
 

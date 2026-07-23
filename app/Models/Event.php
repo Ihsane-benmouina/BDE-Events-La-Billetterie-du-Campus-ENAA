@@ -19,7 +19,7 @@ class Event extends Model
         'capacity',
         'user_id',
     ];
-    public function resrvations()
+    public function reservations()
     {
         return $this->hasMany(Reservation::class);
     }

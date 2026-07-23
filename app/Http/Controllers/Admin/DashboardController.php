@@ -16,10 +16,12 @@ class DashboardController extends Controller
         $eventsCount= Event::count();
         $studentsCount= User::where('role','student')->count();
         $reservationsCount= Reservation::count();
+        $events= Event::withCount('reservations')->get();
         return view('admin.dashboard', compact(
             'eventsCount',
             'studentsCount',
-            'reservationsCount'
+            'reservationsCount',
+            'events',
 
 
         ));
